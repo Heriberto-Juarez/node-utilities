@@ -6,12 +6,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
  */
 
 function getByType(items, type, level) {
-    if (!items && !items.length) {
+    if (!items || !items.length) {
       throw new Error('First argument must be an array')
     }
     let s = null
     level = level || ''
     const search = type + level
+    console.log('items are', items)
     for (const idx in items) {
       if (items[idx].types && items[idx].types.includes(search)) {
         s = items[idx].long_name
