@@ -114,9 +114,6 @@ Get a short description of the address.
 
 Get a long description of the address
 
-**Output:**
-bajo derecha, 24, 04002, Calle Álvarez de Castro, Almería, Andalucía, España
-
 
 **address_components** contains the following structure:
 
