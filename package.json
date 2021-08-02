@@ -1,6 +1,6 @@
 {
   "name": "@herii/node-utilities",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Multiple utilities for node.js projects. Including common utilities, useful for all kinds of projects.",
   "main": "index.js",
   "scripts": {
