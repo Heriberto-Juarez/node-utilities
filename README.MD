@@ -33,11 +33,89 @@ Example:
 Output: lunes, 2 de agosto de 2021
 
 
-### locationString(parts)
+## location
 
-If you are using Google Maps API, and you store the address_components array then you can call this function to receive a formatted string.
+Location is an object containing methods to get parts of an address that comes from address_components (Google Maps API).
+Very useful if you store address_components coming from google's autocomplete implementation. 
+Of couse you could use a google maps API instance to do all of that, but this is useful when you just want to call a method
+and forget about google's api.
 
-        locationString(address_components)
+### How to use?
+
+Don't forget this is an object of methods, to use it:
+
+        const {location} = require("@herii/node-utils")
+        const {getState} = location 
+        console.log(getState(address_components))
+
+Or you can:
+
+        const {location} = require("@herii/node-utils")
+        console.log(location.getState(address_components))
+
+
+The methods contained inside location are:
+
+### getState(address_components, level)
+
+Get the state from address_components (Default level is 1).  
+Sometimes google has: 
+1. administrative_area_level_1
+2. administrative_area_level_2 
+
+You can specify level (1 or 2, etc) adding the argument level.
+
+        // Example
+        const state2 = getState(address_components, 2) // Returns value at administrative_area_level_2
+        const state1 = getState(address_components, 1) // Returns value at administrative_area_level_1
+
+### getStreetNumber(address_components)
+
+Get street number from address_components
+
+### getPostalCode(address_components)
+
+Get postal code from address_components
+
+### getCity(address_components)
+
+Get the city from address_components
+
+### getCountry(address_components)
+
+Get the country from address_components
+
+### getRoute(address_components)
+
+Get the route  from address_components
+
+### getSubLocality(address_components, level)
+
+Get the sublocality  from address_components (Default level is 1)
+
+Sometimes google has: 
+1. sublocality_1
+2. sublocality_2 
+You can specify level (1 or 2, etc) adding the argument level.
+
+        // Example
+        const state2 = getSubLocality(address_components, 2) // Returns value at sublocality_level_2
+        const state1 = getSubLocality(address_components, 1) // Returns value at sublocality_level_1
+
+### getShort(address_components)
+
+Get a short description of the address.
+
+    // Example:
+    const address = getShort(address_components)
+    console.log(address) // outputs: City, State, Country.
+
+### getLong(address_components)
+
+Get a long description of the address
+
+**Output:**
+bajo derecha, 24, 04002, Calle Álvarez de Castro, Almería, Andalucía, España
 
 
 **address_components** contains the following structure:
@@ -108,5 +186,3 @@ If you are using Google Maps API, and you store the address_components array the
                 ]
 
 
-**Output:**
-bajo derecha, 24, Calle Álvarez de Castro, Almería, Almería, Andalucía, España, 04002
