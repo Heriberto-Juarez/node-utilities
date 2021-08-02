@@ -1,0 +1,24 @@
+{
+  "name": "node-utilities",
+  "version": "1.0.0",
+  "description": "Multiple utilities for node.js projects. Including common utilities, useful for all kinds of projects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heriberto-Juarez/node-utilities.git"
+  },
+  "keywords": [
+    "node",
+    "utilities",
+    "common"
+  ],
+  "author": "Heriberto Juárez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Heriberto-Juarez/node-utilities/issues"
+  },
+  "homepage": "https://github.com/Heriberto-Juarez/node-utilities#readme"
+}
