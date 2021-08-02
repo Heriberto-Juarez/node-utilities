@@ -41,6 +41,9 @@ If you are using Google Maps API, and you store the address_components array the
 
 
 **address_components** contains the following structure:
+
+
+
             [
                     {
                         "long_name": "bajo derecha",
