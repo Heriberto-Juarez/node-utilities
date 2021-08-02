@@ -5,6 +5,54 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+function getByType(items, type, level) {
+    if (!items && !items.length) {
+      throw new Error('First argument must be an array')
+    }
+    let s = null
+    level = level || ''
+    const search = type + level
+    console.log('items are', items)
+    for (const idx in items) {
+      console.log('item:', items[idx])
+      if (items[idx].types && items[idx].types.includes(search)) {
+        s = items[idx].long_name
+      }
+    }
+    return s
+}
+function getState(items, level) {
+    level = level || 1
+    return getByType(items, 'administrative_area_level_', level)
+}
+function getStreetNumber(items) {
+    return getByType(items, 'street_number')
+}
+function getPostalCode(items) {
+    return getByType(items, 'postal_code')
+}
+function getCity(items) {
+    return getByType(items, 'locality')
+}
+function getCountry(items) {
+    return getByType(items, 'country')
+}
+function getRoute(items) {
+    return getByType(items, 'route')
+}
+function getSubLocality(items, level) {
+    level = level || 1
+    return getByType(items, 'sublocality_level_', level)
+}
+
+function getShort(items){
+    return [getCity(items), getState(items), getCountry(items)].join(', ') + '.'
+}
+
+function getLong(items){
+    return [getRoute(items), getStreetNumber(items), getPostalCode(items), getCity(items), getState(items), getCountry(items)].join(', ')
+}
+
 module.exports = {
     getDateStr: function (date, iso) {
         return new Date(date).toLocaleDateString(iso, {
@@ -14,13 +62,15 @@ module.exports = {
           day: 'numeric',
         })
     },
-    locationString: function (parts) {
-        const address = []
-        for (const part in parts) {
-          if (parts[part].long_name) {
-            address.push(parts[part].long_name)
-          }
-        }
-        return address.join(', ')
-      },
+    location: {
+        getState: getState,
+        getStreetNumber: getStreetNumber,
+        getPostalCode: getPostalCode,
+        getCity: getCity,
+        getCountry: getCountry,
+        getRoute: getRoute,
+        getSubLocality: getSubLocality,
+        getShort: getShort,
+        getLong: getLong,
+    }
 }
