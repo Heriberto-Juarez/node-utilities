@@ -6,5 +6,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
  */
 
 module.exports = {
-    
+    getDateStr: function (date, iso) {
+        return new Date(date).toLocaleDateString(iso, {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })
+    },
+    locationString: function (parts) {
+        const address = []
+        for (const part in parts) {
+          if (parts[part].long_name) {
+            address.push(parts[part].long_name)
+          }
+        }
+        return address.join(', ')
+      },
 }
