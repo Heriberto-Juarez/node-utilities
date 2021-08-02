@@ -12,9 +12,7 @@ function getByType(items, type, level) {
     let s = null
     level = level || ''
     const search = type + level
-    console.log('items are', items)
     for (const idx in items) {
-      console.log('item:', items[idx])
       if (items[idx].types && items[idx].types.includes(search)) {
         s = items[idx].long_name
       }
