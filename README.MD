@@ -21,7 +21,7 @@ This project is oriented for any kind of apps, specially modern ones.
         utilityName(args) // call utility
 
 
-## What are the available utilities?
+## Utilities List
 
 ### getDateStr(date,iso)
 
