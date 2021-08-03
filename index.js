@@ -43,12 +43,22 @@ function getSubLocality(items, level) {
     return getByType(items, 'sublocality_level_', level)
 }
 
+function removeEmpty(arr){
+    const c = []
+    for (let o in arr){
+        if (arr[0] && arr[0] !== 0){
+            c.push(arr[0])
+        }
+    }
+    return c
+}
+
 function getShort(items){
-    return [getCity(items), getState(items), getCountry(items)].join(', ') + '.'
+    return removeEmpty([getCity(items), getState(items), getCountry(items)]).join(', ') + '.'
 }
 
 function getLong(items){
-    return [getRoute(items), getStreetNumber(items), getPostalCode(items), getCity(items), getState(items), getCountry(items)].join(', ')
+    return removeEmpty([getRoute(items), getStreetNumber(items), getPostalCode(items), getCity(items), getState(items), getCountry(items)]).join(', ')
 }
 
 module.exports = {
