@@ -46,8 +46,8 @@ function getSubLocality(items, level) {
 function removeEmpty(arr){
     const c = []
     for (let o in arr){
-        if (arr[0] && arr[0] !== 0){
-            c.push(arr[0])
+        if (arr[o] && arr[o] !== 0){
+            c.push(arr[o])
         }
     }
     return c
