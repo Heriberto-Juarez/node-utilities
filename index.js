@@ -77,7 +77,7 @@ function removeEmpty(arr){
   return c
 }
 function getShort(items){
-    return removeEmpty([getColloquial(items), getState(items), getCountry(items)]).join(', ') + '.'
+    return removeEmpty([getCity(items), getState(items), getCountry(items)]).join(', ') + '.'
 }
 
 function getLong(items){
