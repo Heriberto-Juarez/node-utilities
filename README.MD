@@ -54,7 +54,12 @@ Or you can:
         console.log(location.getState(address_components))
 
 
-The methods contained inside location are:
+The methods contained inside of location are:
+
+
+### getColloquial(address_components)
+
+Returns the colloquial name of the location. Eg: Area 51
 
 ### getState(address_components, level)
 

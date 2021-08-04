@@ -20,8 +20,18 @@ function getByType(items, type, level) {
     return s
 }
 function getState(items, level) {
+    const type = 'administrative_area_level_'
     level = level || 1
-    return getByType(items, 'administrative_area_level_', level)
+    let d =  getByType(items, type, level)
+
+    if (!d) {
+      if (level === 1){
+        d =  getByType(items, type, 2)
+      }else{
+        d =  getByType(items, type, 1)
+      }
+    }
+    return d
 }
 function getStreetNumber(items) {
     return getByType(items, 'street_number')
@@ -38,27 +48,40 @@ function getCountry(items) {
 function getRoute(items) {
     return getByType(items, 'route')
 }
+
+function getColloquial(items){
+  return getByType(items, 'colloquial_area')
+}
+
 function getSubLocality(items, level) {
     level = level || 1
-    return getByType(items, 'sublocality_level_', level)
+    const type = 'sublocality_level_'
+    let d = getByType(items, type, level)
+    if (!d){
+      if (level === 1){
+        d = getByType(items, type, 2)
+      }else{
+        d = getByType(items, type, 1)
+      }
+    }
+    return d
 }
 
 function removeEmpty(arr){
-    const c = []
-    for (let o in arr){
-        if (arr[o] && arr[o] !== 0){
-            c.push(arr[o])
-        }
+  const c = []
+  for (let o in arr){
+    if (arr[o] && arr[o] !== ''){
+      c.push(arr[o])
     }
-    return c
+  }
+  return c
 }
-
 function getShort(items){
-    return removeEmpty([getCity(items), getState(items), getCountry(items)]).join(', ') + '.'
+    return removeEmpty([getColloquial(items), getCity(items), getState(items), getCountry(items)]).join(', ') + '.'
 }
 
 function getLong(items){
-    return removeEmpty([getRoute(items), getStreetNumber(items), getPostalCode(items), getCity(items), getState(items), getCountry(items)]).join(', ')
+    return removeEmpty([getColloquial(items),getRoute(items), getStreetNumber(items), getPostalCode(items), getCity(items), getState(items), getState(items, 2), getCountry(items)]).join(', ')
 }
 
 module.exports = {
