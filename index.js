@@ -84,6 +84,16 @@ function getLong(items){
     return removeEmpty([getColloquial(items),getRoute(items), getStreetNumber(items), getPostalCode(items), getCity(items), getState(items), getState(items, 2), getCountry(items)]).join(', ')
 }
 
+function currencyFormat(amount, currency, iso) {
+  currency = currency || 'USD'
+  iso = iso || 'es-US'
+  return amount.toLocaleString(iso, {
+    style: 'currency',
+    currency,
+    minimumFractionDigits: 2,
+  })
+}
+
 module.exports = {
     getDateStr: function (date, iso) {
         return new Date(date).toLocaleDateString(iso, {
@@ -103,5 +113,6 @@ module.exports = {
         getSubLocality: getSubLocality,
         getShort: getShort,
         getLong: getLong,
-    }
+    },
+    currencyFormat: currencyFormat
 }
