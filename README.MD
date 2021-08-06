@@ -32,6 +32,16 @@ Example:
 
 Output: lunes, 2 de agosto de 2021
 
+### currencyFormat(amount, currency, iso)
+Returns a formatted string.
+        amount Amount is a Number. Eg: 100
+        currency The currency. Default USD. Other examples: EUR, JPY
+        iso: The language's iso. EG: en-US, de-DE, es-ES
+
+Example:
+
+        currencyFormat(123456.789, 'EUR', 'de-DE')
+        // Output: 123.456,79 €
 
 ## location
 
