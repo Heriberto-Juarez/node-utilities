@@ -99,7 +99,7 @@ function random_number(digits){
   for (let i = 0; i< digits - 1; i++){
     base *= 10
   } 
-  return Math.floor(base + Math.random() * 9000
+  return Math.floor(base + Math.random() * 9000)
 }
 
 module.exports = {
