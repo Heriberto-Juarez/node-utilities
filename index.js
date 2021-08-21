@@ -94,6 +94,14 @@ function currencyFormat(amount, currency, iso) {
   })
 }
 
+function random_number(digits){
+  let base = 1
+  for (let i = 0; i< digits - 1; i++){
+    base *= 10
+  } 
+  return Math.floor(base + Math.random() * 9000
+}
+
 module.exports = {
     getDateStr: function (date, iso) {
         return new Date(date).toLocaleDateString(iso, {
@@ -114,5 +122,6 @@ module.exports = {
         getShort: getShort,
         getLong: getLong,
     },
-    currencyFormat: currencyFormat
+    currencyFormat: currencyFormat,
+    random_number: random_number,
 }

@@ -23,6 +23,17 @@ This project is oriented for any kind of apps, specially modern ones.
 
 ## Utilities List
 
+
+### random_number(n)
+
+Generate a random number of *n* digits.
+
+Example:
+    console.log('4 digits', random_number(4)) // Output: 6090
+    console.log('6 digits', random_number(6)) // Output: 105388
+    console.log('10 digits', random_number(10)) // Output: 1000004099
+
+
 ### getDateStr(date,iso)
 
 Get a string formatted according to an ISO.
