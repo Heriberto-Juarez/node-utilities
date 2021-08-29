@@ -65,6 +65,7 @@ Eg: I have 10 passengers, and I want to know how many cars (items), I need; Each
 
 This function can be used to determine how many rooms you need to host people in a hotel, etc.
 </details>
+
 ### get_percentage_value(number, percentage)
 <details>
 <summary>
@@ -76,13 +77,13 @@ Example:
         get_percentage_value(100, 10) // Output: 10
 
 </details>
+
 ### minusPercentage(number, percentage)
 <details>
 <summary>
 Return the value minus its percentage.
 </summary>
 Example:
-
         // How much is 100 minus 10%?
         minusPercentage(100, 10) // Output is 90
 </details>
@@ -90,7 +91,7 @@ Example:
 ### currencyFormat(amount, currency, iso)
 <details>
 <summary>
-Returns a formatted string.
+Returns a currency formatted string.
 </summary>
 Parameters:
         Amount: Amount is a Number. Eg: 100
@@ -98,10 +99,10 @@ Parameters:
         iso: The language's iso. EG: en-US, de-DE, es-ES
 
 Example:
-
         currencyFormat(123456.789, 'EUR', 'de-DE')
         // Output: 123.456,79 €
 </details>
+
 ## location
 <details>
 <summary>
