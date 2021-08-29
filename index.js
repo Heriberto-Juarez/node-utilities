@@ -100,6 +100,15 @@ function random_number(digits){
   return Math.floor(base + Math.random() * 9000)
 }
 
+// Return the amount representing the *percentage* of *number*
+function get_percentage_value (number, percentage) {
+  return number * (percentage / 100)
+}
+
+function minusPercentage (number, percentage) {
+  return number - get_percentage_value(number, percentage)
+}
+
 module.exports = {
     getDateStr: function (date, iso) {
         return new Date(date).toLocaleDateString(iso, {
@@ -122,4 +131,13 @@ module.exports = {
     },
     currencyFormat: currencyFormat,
     random_number: random_number,
+    /* Return the amout of items needed
+      Eg. I have 10 passengers and each car has a max capacity of 4 passengers.
+      items_needed(10, 4); // 3 items (cars)
+    */
+    items_needed: function (total, max_capacity){
+      return Math.ceil(total / max_capacity)
+    },
+    get_percentage_value: get_percentage_value,
+    minusPercentage: minusPercentage,
 }
