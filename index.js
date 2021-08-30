@@ -150,4 +150,5 @@ module.exports = {
     },
     get_percentage_value: get_percentage_value,
     minusPercentage: minusPercentage,
+    days_difference: days_difference,
 }
