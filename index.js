@@ -83,6 +83,16 @@ function getShort(items){
 function getLong(items){
     return removeEmpty([getColloquial(items),getRoute(items), getStreetNumber(items), getPostalCode(items), getCity(items), getState(items), getState(items, 2), getCountry(items)]).join(', ')
 }
+// dates is array
+function days_difference(dates){
+  let days = 1
+  if (dates.length === 2) {
+    const d1 = new Date(dates[0]).getTime()
+    const d2 = new Date(dates[1]).getTime()
+    days = Math.abs((d1 - d2) / (1000 * 3600 * 24)) + 1
+  }
+  return
+}
 
 function currencyFormat(amount, currency, iso) {
   currency = currency || 'USD'

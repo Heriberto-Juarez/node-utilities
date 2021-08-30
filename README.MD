@@ -88,6 +88,15 @@ Example:
         minusPercentage(100, 10) // Output is 90
 </details>
 
+### days_difference(dates)
+<details>
+<summary>
+    Get the difference in days between two dates.
+</summary>
+
+        days_difference(dates) // dates is an array of dates.
+</details>
+
 ### currencyFormat(amount, currency, iso)
 <details>
 <summary>
