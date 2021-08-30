@@ -91,7 +91,7 @@ function days_difference(dates){
     const d2 = new Date(dates[1]).getTime()
     days = Math.abs((d1 - d2) / (1000 * 3600 * 24)) + 1
   }
-  return
+  return days
 }
 
 function currencyFormat(amount, currency, iso) {
