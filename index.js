@@ -7,14 +7,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 function getByType(items, type, level) {
     if (!items || !items.length) {
+      throw new Error('Items are not defined')
       return ''
     }
     let s = null
     level = level || ''
     const search = type + level
     for (const idx in items) {
-      if (items[idx].types && items[idx].types.includes(search)) {
-        s = items[idx].long_name
+      try{
+        if (items[idx].types && items[idx].types.includes(search)) {
+          s = items[idx].long_name
+        }
+      }catch (e){
+        console.error(e)
+        throw new Error('Error in items')
       }
     }
     return s
@@ -85,6 +91,9 @@ function getLong(items){
 }
 // dates is array
 function days_difference(dates){
+  if (dates === undefined || !dates){
+    throw new Error('dates must be an array')
+  }
   let days = 1
   if (dates.length === 2) {
     const d1 = new Date(dates[0]).getTime()
@@ -105,6 +114,9 @@ function currencyFormat(amount, currency, iso) {
 }
 
 function random_number(digits){
+  if (!digits || digits === undefined) {
+    throw new Error('Digits must be a number')
+  }
   let base = 1
   for (let i = 0; i< digits - 1; i++) base *= 10
   return Math.floor(base + Math.random() * 9000)
@@ -112,16 +124,25 @@ function random_number(digits){
 
 // Return the amount representing the *percentage* of *number*
 function get_percentage_value (number, percentage) {
+  if (number === undefined || percentage === undefined || !number || !percentage) {
+    throw new Error('Invalid parameters')
+  }
   return number * (percentage / 100)
 }
 
 function minusPercentage (number, percentage) {
+  if (number === undefined || percentage === undefined || !number || !percentage) {
+    throw new Error('Invalid parameters')
+  }
   return number - get_percentage_value(number, percentage)
 }
 
 module.exports = {
     getDateStr: function (date, iso) {
-        return new Date(date).toLocaleDateString(iso, {
+      if (!date || date === undefined || !iso || iso === undefined){
+        throw new Error('Invalid parameters in getDateStr')
+      }
+      return new Date(date).toLocaleDateString(iso, {
           weekday: 'long',
           year: 'numeric',
           month: 'long',
@@ -146,6 +167,9 @@ module.exports = {
       items_needed(10, 4); // 3 items (cars)
     */
     items_needed: function (total, max_capacity){
+      if (!total || !max_capacity || total === undefined || max_capacity === undefined){
+        throw new Error('Invalid parameters in items_needed');
+      }
       return Math.ceil(total / max_capacity)
     },
     get_percentage_value: get_percentage_value,
