@@ -45,7 +45,17 @@ This project is oriented for any kind of apps, specially modern ones.
 Returns the current day in the specified timezone.
 </summary>
 
-        today('America/Argentina/Buenos_Aires') // output: 2021-09-09
+        today('America/Argentina/Buenos_Aires') // output: 09/09/2021
+</details>
+
+
+### dateReverse(date)
+<details>
+<summary>
+Reverse a date and replace / with -
+</summary>
+
+        dateReverse(today('America/Argentina/Buenos_Aires')) // output: 2021-09-09
 </details>
 
 ### getDateStr(date,iso, timezone)
