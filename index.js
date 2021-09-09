@@ -145,6 +145,23 @@ function minusPercentage (number, percentage) {
   return number - getPercentageValue(number, percentage)
 }
 
+function today(timezone){ 
+  // The iso (es-AR) does not matter because output does not contain words.
+  const opts = {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  }
+  if (timezone && timezone.length >0){
+    opts.timezone = timezone
+  }
+  return new Date().toLocaleDateString('es-AR', opts)
+}
+
+function dateReverse(date){
+  return date.split('/').reverse().join('-')
+}
+
 module.exports = {
     getDateStr: function (date, iso, timezone) {
       if (!date || date === undefined || !iso || iso === undefined){
@@ -189,4 +206,6 @@ module.exports = {
     getPercentageValue,
     minusPercentage: minusPercentage,
     days_difference: days_difference,
+    today,
+    dateReverse,
 }

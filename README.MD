@@ -39,6 +39,15 @@ This project is oriented for any kind of apps, specially modern ones.
 
 </details>
 
+### today(timezone)
+<details>
+<summary>
+Returns the current day in the specified timezone.
+</summary>
+
+        today('America/Argentina/Buenos_Aires') // output: 2021-09-09
+</details>
+
 ### getDateStr(date,iso, timezone)
 <details>
 <summary>
