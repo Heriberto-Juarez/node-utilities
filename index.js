@@ -122,32 +122,45 @@ function random_number(digits){
   return Math.floor(base + Math.random() * 9000)
 }
 
+
 // Return the amount representing the *percentage* of *number*
-function get_percentage_value (number, percentage) {
+function getPercentageValue (number, percentage) {
   if (number === undefined || percentage === undefined || !number || !percentage) {
     throw new Error('Invalid parameters')
   }
   return number * (percentage / 100)
 }
 
+// Return the amount representing the *percentage* of *number*
+function get_percentage_value (number, percentage) {
+  console.warn('get_percentage_value is now deprecated, please use getPercentageValue instead. get_percentage_value will be removed in a future version of this package.')
+  return getPercentageValue(number, percentage)
+}
+
+
 function minusPercentage (number, percentage) {
   if (number === undefined || percentage === undefined || !number || !percentage) {
     throw new Error('Invalid parameters')
   }
-  return number - get_percentage_value(number, percentage)
+  return number - getPercentageValue(number, percentage)
 }
 
 module.exports = {
-    getDateStr: function (date, iso) {
+    getDateStr: function (date, iso, timezone) {
       if (!date || date === undefined || !iso || iso === undefined){
         throw new Error('Invalid parameters in getDateStr')
       }
-      return new Date(date).toLocaleDateString(iso, {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        })
+
+      const options =  {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }
+      if (timezone && timezone.length && timezone.length > 0 ){
+        options.timezone = timezone
+      }
+      return new Date(date).toLocaleDateString(iso, options)
     },
     location: {
         getState: getState,
@@ -172,7 +185,8 @@ module.exports = {
       }
       return Math.ceil(total / max_capacity)
     },
-    get_percentage_value: get_percentage_value,
+    get_percentage_value,
+    getPercentageValue,
     minusPercentage: minusPercentage,
     days_difference: days_difference,
 }

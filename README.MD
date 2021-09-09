@@ -39,17 +39,21 @@ This project is oriented for any kind of apps, specially modern ones.
 
 </details>
 
-### getDateStr(date,iso)
+### getDateStr(date,iso, timezone)
 <details>
 <summary>
 Get a string formatted according to an ISO.
 </summary>
 
-Example:
+You can call the function to get a string in a specific language.
 
         getDateStr("2021/08/02", "es-MX")
 
 Output: lunes, 2 de agosto de 2021
+
+You could optionally add a third parameter "timezone".
+
+        getDateStr("2021/08/02", "es-AR", "America/Argentina/Buenos_Aires")
 
 </details>
 
