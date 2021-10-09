@@ -221,6 +221,11 @@ Get a short description of the address.
 ### getLong(address_components)
 Get a long description of the address
 
+### getMiddle(address_components)
+Get a not so long description (without the colloquial name of the place)
+
+-------------
+#### Structure of address_components
 **address_components** 
 <details>
 <summary>
@@ -290,5 +295,5 @@ contains the following structure:
                     }
                 ]
 
-    </details>
+</details>
 </details>
