@@ -96,7 +96,7 @@ function getLong(items) {
   return removeEmpty([getColloquial(items), getRoute(items), getStreetNumber(items), getPostalCode(items), getCity(items), getState(items), getCountry(items)]).join(', ')
 }
 
-function getMiddle() {
+function getMiddle(items) {
   return removeEmpty([getRoute(items), getStreetNumber(items), getPostalCode(items), getCity(items), getState(items), getCountry(items)]).join(', ')
 }
 
