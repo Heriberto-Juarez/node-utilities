@@ -5,17 +5,23 @@
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-function getByType(items, type, level) {
+function getByType(items, type, level, short) {
   if (!items || !items.length) {
     throw new Error('Items are not defined')
   }
   let s = null
   level = level || ''
+  short = short || false
   const search = type + level
   for (const idx in items) {
     try {
       if (items[idx].types && items[idx].types.includes(search)) {
-        s = items[idx].long_name
+        const it = items[idx]
+        if (short){
+          s = items[idx].short_name
+        }else{
+          s = items[idx].long_name
+        }
       }
     } catch (e) {
       console.error(e)
@@ -32,9 +38,9 @@ function getState(items, level) {
 
   if (!d) {
     if (level === 1) {
-      d = getByType(items, type, 2)
+      d = getByType(items, type, 2,true)
     } else {
-      d = getByType(items, type, 1)
+      d = getByType(items, type, 1, true)
     }
   }
   return d
