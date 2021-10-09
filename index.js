@@ -34,7 +34,7 @@ function getByType(items, type, level, short) {
 function getState(items, level) {
   const type = 'administrative_area_level_'
   level = level || 1
-  let d = getByType(items, type, level)
+  let d = getByType(items, type, level, true)
 
   if (!d) {
     if (level === 1) {
