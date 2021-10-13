@@ -142,7 +142,7 @@ function random_number(digits) {
 
 // Return the amount representing the *percentage* of *number*
 function getPercentageValue(number, percentage) {
-  if (number === undefined || percentage === undefined || !number || !percentage) {
+  if (isNaN(number) || isNaN(percentage)) {
     throw new Error('Invalid parameters')
   }
   return number * (percentage / 100)
@@ -156,7 +156,7 @@ function get_percentage_value(number, percentage) {
 
 
 function minusPercentage(number, percentage) {
-  if (number === undefined || percentage === undefined || !number || !percentage) {
+  if (isNaN(number) || isNaN(percentage)) {
     throw new Error('Invalid parameters')
   }
   return number - getPercentageValue(number, percentage)
